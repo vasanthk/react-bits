@@ -1,2 +1,1 @@
-# react-techniques
-React Techniques &amp; Patterns 
+# React Techniques &amp; Patterns 
