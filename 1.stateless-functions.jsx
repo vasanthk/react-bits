@@ -1,6 +1,19 @@
 /**
  * Stateless functions are a great way to define highly reusable components.
- * They don't hold state; they're juts functions.
+ * They don't hold state; they're just functions.
+ *
+ *  One of the advantages of using functions includes a very clear separation of view and logic (see the first point), because there is no room for any logic.
+ *  The absence of the this keyword and thus lacking the ability to add functions that do internal state handling and logic further enforces this separation.
+ *
+ * Stateless functional components will soon offer improved performance as well.
+ * Since there’s no state or lifecycle methods to worry about, the React team plans to avoid unnecessary checks and memory allocations in future releases.
+ *
+ * @Reference:
+ * https://medium.com/@housecor/react-stateless-functional-components-nine-wins-you-might-have-overlooked-997b0d933dbc#.uf2v8yt3y
+ * https://medium.com/javascript-inside/some-thoughts-on-function-components-in-react-cb2938686bc7#.4nuietgvb
+ *
+ * Pros and Cons: http://stackoverflow.com/questions/40703675/react-functional-stateless-component-purecomponent-component-what-are-the-dif
+ * Minor Optimization: http://cooperm.com/2016/10/19/clean-up-stateless-react-components-with-inline-render-functions/
  */
 
 import {PropTypes, ContextTypes} from "react";
