@@ -1,0 +1,20 @@
+/**
+ * Destructuring assignment is an ES2015 feature. It pairs nicely with props in Stateless Functions.
+ */
+
+// These examples are equivalent.
+
+const Greeting = props => <div>Hi {props.name}!</div>;
+
+const Greeting = ({ name }) => <div>Hi {name}!</div>;
+
+// The rest parameter syntax (...) allows you to collect all the remaining properties in a new object.
+
+const Greeting = ({ name, ...props }) => <div>Hi {name}!</div>;
+
+// In turn, this object can use JSX Spread Attributes to forward props to the composed component.
+
+const Greeting = ({ name, ...props }) => <div {...props}>Hi {name}!</div>;
+
+// Avoid forwarding non-DOM props to composed components.
+// Destructuring makes this very easy because you can create a new props object without component-specific props.
