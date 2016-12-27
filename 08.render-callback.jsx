@@ -51,3 +51,5 @@ class WindowWidth extends React.Component {
     return this.props.children(this.state.width);
   }
 }
+
+// Many developers favor Higher Order Components for this type of functionality. It’s a matter of preference.
