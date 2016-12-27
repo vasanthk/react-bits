@@ -26,3 +26,7 @@ return children;
 
 // It’s best to treat children as an opaque data type. React provides React.Children for dealing with children appropriately.
 return React.Children.only(this.props.children);
+
+// Note: We should mention that there is no API that allow us accessing child's state. Or in other words we can't use this.props.children[0].state or something like that.
+// The proper way of retrieving information from the children is by using props (passing callbacks).
+// And that's a good thing. This approach forces us defining clear APIs and encourage the one-way direction data flow.
