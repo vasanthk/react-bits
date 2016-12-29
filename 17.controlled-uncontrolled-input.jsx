@@ -1,16 +1,20 @@
 /**
  * Controlled - Uncontrolled Components
  * Gist: https://gist.github.com/vasanthk/a6bf35857749b09275a339f6fd9469bb
+ * In depth: https://goshakkk.name/controlled-vs-uncontrolled-inputs-react/
  *
  * @Reference:
  * https://www.sitepoint.com/video-controlled-vs-uncontrolled-components-in-react/
- * https://goshakkk.name/controlled-vs-uncontrolled-inputs-react/
  * https://facebook.github.io/react/docs/uncontrolled-components.html
  */
 
 // It’s hard to talk about controlled inputs in the abstract. Let’s start with an uncontrolled (normal) input and go from there.
 // So, a normal HTML input field effectively stores its own value at all times, and you can get the element and ask for its value.
 // this is what we refer to as an "uncontrolled" input
+
+// What makes an element “controlled”?
+// There are other form elements, of course. You have checkboxes and radios and selects and textareas.
+// A form element becomes “controlled” if you set its value via a prop. That’s all.
 <input type="text" />
 // When you fiddle with this input in the browser, you see your changes. This is normal.
 
