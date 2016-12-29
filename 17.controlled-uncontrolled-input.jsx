@@ -58,7 +58,7 @@ class ControlledNameInput extends Component {
 // In React, you can still create "uncontrolled" inputs: Using 'refs'
 // The ref attribute takes a callback function, and the callback will be executed immediately after the component is mounted or unmounted.
 // When the ref attribute is used on an HTML element, the ref callback receives the underlying DOM element as its argument.
-// For example, this code uses the ref callback to store a reference to a DOM node:
+// More on refs: https://facebook.github.io/react/docs/refs-and-the-dom.html
 
 class MyComponent extends React.Component {
   onClick() {
