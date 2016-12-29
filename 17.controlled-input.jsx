@@ -1,3 +1,10 @@
+/**
+ * Controlled - Uncontrolled Components
+ *
+ * @Reference:
+ * https://www.sitepoint.com/video-controlled-vs-uncontrolled-components-in-react/
+ */
+
 // It’s hard to talk about controlled inputs in the abstract. Let’s start with an uncontrolled (normal) input and go from there.
 
 <input type="text" />
