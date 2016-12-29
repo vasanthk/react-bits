@@ -52,7 +52,7 @@ class ControlledNameInput extends Component {
 // Note:
 // In React, you can still create "uncontrolled" inputs: Using 'refs'
 
-const MyComponent extends React.Component {
+class MyComponent extends React.Component {
   onClick() {
     const input = this.refs.myInput;
     const value = input.value;
