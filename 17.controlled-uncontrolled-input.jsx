@@ -15,13 +15,13 @@
 // What makes an element “controlled”?
 // There are other form elements, of course. You have checkboxes and radios and selects and textareas.
 // A form element becomes “controlled” if you set its value via a prop. That’s all.
-<input type="text" />
+let simpleInput = '<input type="text" />';
 // When you fiddle with this input in the browser, you see your changes. This is normal.
 
 // A controlled input disallows the DOM mutations that make this possible.
 // You set the value of the input in component-land and it doesn’t change in DOM-land.
 
-<input type="text" value="This won't change. Try it." />
+let simpleInput = '<input type="text" value="This won\'t change. Try it." />';
 // Obviously static inputs aren’t very useful to your users. So, we derive a value from state.
 
 class UncontrolledNameInput extends React.Component {
