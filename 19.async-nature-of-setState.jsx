@@ -1,6 +1,11 @@
 /**
  * On the Async nature of setState()
  *
+ * Gist:
+ * React batches updates and flushes it put once per frame (perf optimization)
+ * However, in some cases Reatc has no control over batching, hence updates are made synchronously
+ * eg. eventListeners, ajax, setTimeout and similar Web APIs
+ *
  * @Reference:
  * http://thereignn.ghost.io/on-the-async-nature-of-setstate-in-react/
  * https://medium.com/@wereHamster/beware-react-setstate-is-asynchronous-ce87ef1a9cf3#.jhdhncws3
