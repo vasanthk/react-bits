@@ -1,0 +1,157 @@
+/**
+ * On the Async nature of setState()
+ *
+ * @Reference:
+ * http://thereignn.ghost.io/on-the-async-nature-of-setstate-in-react/
+ * https://medium.com/@wereHamster/beware-react-setstate-is-asynchronous-ce87ef1a9cf3#.jhdhncws3
+ * https://www.bennadel.com/blog/2893-setstate-state-mutation-operation-may-be-synchronous-in-reactjs.htm
+ */
+
+// Main Idea
+// setState() does not immediately mutate this.state but creates a pending state transition.
+// Accessing this.state after calling this method can potentially return the existing value.
+// There is no guarantee of synchronous operation of calls to setState and calls may be batched for performance gains.
+
+
+// Run the below code and you will make the following observations:
+//
+// You can see that in every situation (addEventListener, setTimeout or AJAX call) the state before and the state after are different.
+// And that render was called immediately after triggering the setState method. But why is that?
+// Well, it turns out React does not understand and thus cannot control code that doesn't live inside the library.
+// Timeouts or AJAX calls for example, are developer authored code that executes outside of the context of React.
+//
+// So why does React synchronously updated the state in these cases? Well, because it's trying to be as defensive as possible.
+// Not being in control means it's not able to do any perf optimisations so it's better to update the state on spot and
+// make sure the code that follows has access to the latest information available.
+
+var TestComponent = React.createClass({
+  displayName: 'TestComponent',
+
+  getInitialState: function getInitialState() {
+    return {
+      dollars: 10
+    };
+  },
+
+  componentDidMount: function componentDidMount() {
+    // Add custom event via `addEventListener`
+    //
+    // The list of supported React events does include `mouseleave`
+    // via `onMouseLeave` prop
+    //
+    // However, we are not adding the event the `React way` - this will have
+    // effects on how state mutates
+    //
+    // Check the list here - https://facebook.github.io/react/docs/events.html
+    this.refs.btn.addEventListener('mouseleave', this._onMouseLeaveHandler);
+
+    // Add JS timeout
+    //
+    // Again,outside React `world` - this will also have effects on how state
+    // mutates
+    setTimeout(this._onTimeoutHandler, 10000);
+
+    // Make AJAX request
+    superagent
+      .get('https://api.github.com/users')
+      .end(this._onAjaxCallback);
+  },
+
+  render: function render() {
+    console.log('State in render: ' + JSON.stringify(this.state));
+
+    return React.createElement(
+      'button',
+      {
+        ref: 'btn',
+        onClick: this._onClickHandler
+      },
+      'Click me'
+    );
+  },
+
+  _onClickHandler: function _onClickHandler() {
+    console.log('State before (_onClickHandler): ' + JSON.stringify(this.state));
+    this.setState({
+      dollars: this.state.dollars + 10
+    });
+    console.log('State after (_onClickHandler): ' + JSON.stringify(this.state));
+  },
+
+  _onMouseLeaveHandler: function _onMouseLeaveHandler() {
+    console.log('State before (mouseleave): ' + JSON.stringify(this.state));
+    this.setState({
+      dollars: this.state.dollars + 20
+    });
+    console.log('State after (mouseleave): ' + JSON.stringify(this.state));
+  },
+
+  _onTimeoutHandler: function _onTimeoutHandler() {
+    console.log('State before (timeout): ' + JSON.stringify(this.state));
+    this.setState({
+      dollars: this.state.dollars + 30
+    });
+    console.log('State after (timeout): ' + JSON.stringify(this.state));
+  },
+
+  _onAjaxCallback: function _onAjaxCallback(err, res) {
+    if (err) {
+      console.log('Error in AJAX call: ' + JSON.stringify(err));
+      return;
+    }
+
+    console.log('State before (AJAX call): ' + JSON.stringify(this.state));
+    this.setState({
+      dollars: this.state.dollars + 40
+    });
+    console.log('State after (AJAX call): ' + JSON.stringify(this.state));
+  }
+});
+
+// Render to DOM
+ReactDOM.render(
+  React.createElement(TestComponent),
+  document.getElementById('app')
+);
+
+// POSSIBLE SOLUTION?
+// We're used to calling setState with one parameter only, but actually, the method's signature support two.
+// The second argument that you can pass in is a callback function that will always be executed after the state has been updated (whether it's inside React's known context or outside of it).
+
+//An example might be:
+
+
+  _onClickHandler: function _onClickHandler() {
+    console.log('State before (_onClickHandler): ' + JSON.stringify(this.state));
+    this.setState({
+      dollars: this.state.dollars + 10
+    }, () => {
+      console.log('Here state will always be updated to latest version!');
+      console.log('State after (_onClickHandler): ' + JSON.stringify(this.state));
+    });
+  }
+
+
+// A NOTE ON THE ASYNC NATURE OF SETSTATE
+// To be politically correct, setState, as a method, is always synchronous.
+// It's just a function that calls something behind the scenes - enqueueState or enqueueCallback on updater.
+
+// In fact, here's setState taken directly from React source code:
+
+
+ReactComponent.prototype.setState = function(partialState, callback) {
+  invariant(
+    typeof partialState === 'object' ||
+    typeof partialState === 'function' ||
+    partialState == null,
+    'setState(...): takes an object of state variables to update or a ' +
+    'function which returns an object of state variables.'
+  );
+  this.updater.enqueueSetState(this, partialState);
+  if (callback) {
+    this.updater.enqueueCallback(this, callback, 'setState');
+  }
+};
+
+// What's actually sync or async are the effects of calling setState in a React application - the reconciliation algorithm, doing the VDOM comparisons and calling render to update the real DOM.
+
