@@ -37,13 +37,13 @@ import Header from './Header.jsx';
 class App extends React.Component {
   constructor(props) {
     super(props);
-    this.state = { title: 'React in patterns' };
+    this.state = { title: 'React Dependency Injection' };
   }
   render() {
     return <Header />;
   }
 }
-// The string "React in patterns" should somehow reach the Title component.
+// The string "React Dependency Injection" should somehow reach the Title component.
 // The direct way of doing this is to pass it from App to Header and then Header to pass it to Title.
 // However, this may work for these three components but what happens if there are multiple properties and deeper nesting.
 // Lots of components will have to mention properties that they are not interested in.
@@ -90,3 +90,31 @@ export default function Header() {
 // The title is hidden in a middle layer (higher-order component) where we pass it as a prop to the original Title component.
 // That's all nice but it solves only half of the problem.
 // Now we don't have to pass the title down the tree but how this data will reach the enhance.jsx helper.
+
+// Using React's context
+// React has the concept of context. The context is something that every component may have access to.
+// It's something like an event bus but for data. A single model which we can access from everywhere.
+
+// a place where we'll define the context
+var context = { title: 'React in patterns' };
+class App extends React.Component {
+  getChildContext() {
+    return context;
+  }
+  // ...
+}
+
+App.childContextTypes = {
+  title: React.PropTypes.string
+};
+
+// a place where we need data
+class Inject extends React.Component {
+  render() {
+    var title = this.context.title;
+  // ...
+  }
+}
+Inject.contextTypes = {
+  title: React.PropTypes.string
+};
