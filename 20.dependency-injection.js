@@ -118,3 +118,48 @@ class Inject extends React.Component {
 Inject.contextTypes = {
   title: React.PropTypes.string
 };
+
+// It is a good practice that our context is not just a plain object but it has an interface that allows us to store and retrieve data. For example:
+
+// dependencies.js
+export default {
+  data: {},
+  get(key) {
+    return this.data[key];
+  },
+  register(key, value) {
+    this.data[key] = value;
+  }
+}
+
+//Then, if we go back to our example, the very top App component may look like that:
+import dependencies from './dependencies';
+dependencies.register('title', 'React in patterns');
+
+class App extends React.Component {
+  getChildContext() {
+    return dependencies;
+  }
+  render() {
+    return <Header />;
+  }
+}
+
+App.childContextTypes = {
+  data: React.PropTypes.object,
+  get: React.PropTypes.func,
+  register: React.PropTypes.func
+};
+// And our Title component gets it's data through the context:
+
+// Title.jsx
+export default class Title extends React.Component {
+  render() {
+    return <h1>{ this.context.get('title') }</h1>
+  }
+}
+Title.contextTypes = {
+  data: React.PropTypes.object,
+  get: React.PropTypes.func,
+  register: React.PropTypes.func
+};
