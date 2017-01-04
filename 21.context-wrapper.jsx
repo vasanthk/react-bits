@@ -89,3 +89,81 @@ export default function wire(Component, dependencies, mapper) {
 
 // Inject is a higher-order component that gets access to the context and retrieves all the items listed under dependencies array.
 // The mapper is a function receiving the context data and transforms it to props for our component.
+
+// NON CONTEXT ALTERNATIVE //
+// Use a singleton to register/fetch all dependencies
+
+var dependencies = {};
+
+export function register(key, dependency) {
+  dependencies[key] = dependency;
+}
+
+export function fetch(key) {
+  if (dependencies[key]) return dependencies[key];
+  throw new Error(`"${ key } is not registered as dependency.`);
+}
+
+export function wire(Component, deps, mapper) {
+  return class Injector extends React.Component {
+    constructor(props) {
+      super(props);
+      this._resolvedDependencies = mapper(...deps.map(fetch));
+    }
+    render() {
+      return (
+        <Component
+          {...this.state}
+          {...this.props}
+          {...this._resolvedDependencies}
+        />
+      );
+    }
+  };
+}
+
+// We'll store the dependencies in dependencies global variable (it's global for our module, not at an application level).
+// We then export two functions register and fetch that write and read entries.
+// It looks a little bit like implementing setter and getter against a simple JavaScript object.
+// Then we have the wire function that accepts our React component and returns a higher-order component.
+// In the constructor of that component we are resolving the dependencies and later while rendering the original component we pass them as props.
+// We follow the same pattern where we describe what we need (deps argument) and extract the needed props with a mapper function.
+
+// Having the di.jsx helper we are again able to register our dependencies at the entry point of our application (app.jsx) and inject them wherever (Title.jsx) we need.
+
+// app.jsx
+  import Header from './Header.jsx';
+import { register } from './di.jsx';
+
+register('my-awesome-title', 'React in patterns');
+
+class App extends React.Component {
+  render() {
+    return <Header />;
+  }
+}
+
+// -----------------------------------
+// Header.jsx
+import Title from './Title.jsx';
+
+export default function Header() {
+  return (
+    <header>
+      <Title />
+    </header>
+  );
+}
+
+// -----------------------------------
+// Title.jsx
+import { wire } from './di.jsx';
+
+var Title = function(props) {
+  return <h1>{ props.title }</h1>;
+};
+
+export default wire(Title, ['my-awesome-title'], title => ({ title }));
+
+// If we look at the Title.jsx file we'll see that the actual component and the wiring may live in different files.
+// That way the component and the mapper function become easily unit testable.
