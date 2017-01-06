@@ -1,6 +1,6 @@
 /**
- * Context
- * https://facebook.github.io/react/docs/context.html
+ * Children types
+ * http://krasimirtsonev.com/blog/article/children-in-jsx
  */
 
 // You might create a component designed to apply context and render its children.
