@@ -60,3 +60,74 @@ export default class Header extends React.Component {
   }
 };
 // This technique is helpful when we have a mix between components that exist inside the Header and components that have to be provided from the outside.
+
+
+// Using JSX Expression
+function UserName(props) {
+  return (
+    <div>
+      <b>{props.children.lastName}</b>
+      {props.children.firstName}
+    </div>
+  );
+}
+
+function App() {
+  var user = {
+    firstName: 'Vasanth',
+    lastName: 'Krishnamoorthy'
+  };
+
+  return(
+    <UserName>{ user }</UserName>
+  )
+}
+
+// This may look weird but may be useful in some cases. Like for example when we have some knowledge in the parent component and don’t necessary want to send it down the tree.
+// The example below prints a list of TODOs.
+// The App component has all the data and knows how to determine whether a TODO is completed or not.
+// The TodoList component simply encapsulate the needed HTML markup.
+
+function TodoList(props) {
+  const renderTodo = (todo, i) => {
+    return (
+      <li key={ i }>
+        { props.children(todo) }
+      </li>
+    );
+  };
+  return (
+    <section className='main-section'>
+      <ul className='todo-list'>{ props.todos.map(renderTodo)}</ul>
+    </section>
+  );
+}
+
+function App() {
+  const todos = [
+    { label: 'Write tests', status: 'done' },
+    { label: 'Sent report', status: 'progress' },
+    { label: 'Answer emails', status: 'done' }
+  ];
+  var isCompleted = todo => todo.status === 'done';
+
+  return (
+    <TodoList todos={ todos }>
+      { todo => isCompleted(todo) ? <b>{ todo.label }</b> : todo.label }
+    </TodoList>
+  );
+}
+
+// Notice how the App component doesn’t expose the structure of the data. TodoList has no idea that there is label or status properties.
+// When I first saw that pattern I was thinking “How’s that different by passing an additional prop?”. For example:
+
+  <TodoList
+    todos={ todos }
+    renderTodo= {
+      (todo) => isCompleted(todo) ? <b>{ todo.label }</b> : todo.label
+    }
+  />
+
+// With `props.children`. It becomes obvious that the expression is used for rendering the children of the component.
+// From another point of view having an explicit method like renderTodo makes it even clearer. So, I guess it is more or less a personal feeling.
+// Vasa: Personally I like renderTodo() function being passed to the component (or) having it inside the component.
