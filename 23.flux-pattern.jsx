@@ -7,7 +7,7 @@ var Dispatcher = function () {
   return {
     _stores: [],
     register: function (store) {
-      this._stores.push({ store: store });
+      this._stores.push({store: store});
     },
     dispatch: function (action) {
       if (this._stores.length > 0) {
@@ -18,3 +18,12 @@ var Dispatcher = function () {
     }
   }
 };
+
+// We see the we expect the store to have an update method(), so let's modify register to expect it.
+function register(store) {
+  if (!store || !store.update && typeof store.update === 'function') {
+    throw new Error('You should provide a store that has an updte method');
+  } else {
+    this._stores.push({store: store});
+  }
+}
