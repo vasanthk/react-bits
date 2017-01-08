@@ -1,6 +1,9 @@
 /**
  * A higher-order function is a function that takes and/or returns a function. It’s not more complicated than that. So, what’s a higher-order component?
  * If you’re already using container components, these are just generic containers, wrapped up in a function.
+ *
+ * Higher-order components look really similar to the decorator design pattern.
+ * It is wrapping a component and attaching some new functionalities or props to it.
  */
 
 // Let’s start with our stateless Greeting component.
