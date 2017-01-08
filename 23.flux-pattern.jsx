@@ -1,5 +1,8 @@
 /**
  * Flux pattern for data handling
+ *
+ * @Reference:
+ * https://github.com/krasimir/react-in-patterns/tree/master/patterns/flux
  */
 
 // Simple dispatcher
