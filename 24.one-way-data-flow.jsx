@@ -4,3 +4,62 @@
  * Reference:
  * https://www.startuprocket.com/articles/evolution-toward-one-way-data-flow-a-quick-introduction-to-redux
  */
+
+// One-way direction data flow eliminates multiple states and deals with only one which is usually inside the store.
+// To achieve that we our Store object needs logic that allows us to subscribe for changes:
+
+var Store = {
+  _handlers: [],
+  _flag: '',
+  onChange: function (handler) {
+    this._handlers.push(handler);
+  },
+  set: function (value) {
+    this._flag = value;
+    this._handlers.forEach(handler => handler())
+  },
+  get: function () {
+    return this._flag;
+  }
+};
+
+// Then we will hook our main App component and we'll re-render it every time when the Store changes its value:
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+    Store.onChange(this.forceUpdate.bind(this));
+  }
+
+  render() {
+    return (
+      <div>
+        <Switcher
+          value={ Store.get() }
+          onChange={ Store.set.bind(Store) }/>
+      </div>
+    );
+  }
+}
+// (Notice that we are using forceUpdate which is not really recommended.
+// Normally a high-order component is used to enable the re-rendering. We used forceUpdate just to keep the example simple.)
+// Because of this change the Switcher becomes really simple. We don't need the internal state:
+class Switcher extends React.Component {
+  constructor(props) {
+    super(props);
+    this._onButtonClick = e => {
+      this.props.onChange(!this.props.value);
+    }
+  }
+
+  render() {
+    return (
+      <button onClick={ this._onButtonClick }>
+        { this.props.value ? 'lights on' : 'lights off' }
+      </button>
+    );
+  }
+}
+// The benefit that comes with this pattern is that our components become dummy representation of the Store's data.
+// It's really easy to think about the React components as views (renderers).
+// We write our application in a declarative way and deal with the complexity in only one place.
+
