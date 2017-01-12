@@ -1,6 +1,3 @@
 # React Techniques &amp; Patterns 
 
-
-## Reference
-
-[React Patterns](http://reactpatterns.com/#stateless-function)
+A compilation of React Techniques and patterns used in the wild.
