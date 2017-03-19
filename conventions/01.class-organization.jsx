@@ -102,3 +102,36 @@ class ProfileContainer extends Component {
     );
   }
 }
+
+/**
+ * Class methods (using arrow functions)
+ * With class components, when you pass methods to subcomponents, you have to ensure that they have the right `this` when they’re called.
+ * This is usually achieved by passing this.handleSubmit.bind(this) to the subcomponent.
+ * However using arrow functions does not create its own this context, so this has its original meaning from the enclosing context.
+ */
+
+class ProfileContainer extends Component {
+  state = {activeProfile: false};
+
+  handleSubmit = (e) => {
+    e.preventDefault();
+    this.props.model.save()
+  };
+
+  handleNameChange = (e) => {
+    this.props.model.changeName(e.target.value)
+  };
+
+  handleExpand = (e) => {
+    e.preventDefault();
+    this.setState({activeProfile: !this.state.activeProfile})
+  };
+
+  render() {
+    return (
+      <div>
+        Is Profile Active: {this.state.activeProfile}
+      </div>
+    );
+  }
+}
