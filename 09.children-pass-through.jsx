@@ -51,11 +51,11 @@ class App extends React.Component {
 export default class Header extends React.Component {
   render() {
     return (
-      <header>
+      <h1>
         { this.props.title }
         <hr />
         { this.props.children }
-      </header>
+      </h1>
     );
   }
 };
