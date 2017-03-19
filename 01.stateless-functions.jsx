@@ -11,6 +11,7 @@
  * @Reference:
  * https://medium.com/@housecor/react-stateless-functional-components-nine-wins-you-might-have-overlooked-997b0d933dbc#.uf2v8yt3y
  * https://medium.com/javascript-inside/some-thoughts-on-function-components-in-react-cb2938686bc7#.4nuietgvb
+ * https://hackernoon.com/react-stateless-functional-components-nine-wins-you-might-have-overlooked-997b0d933dbc#.rnyamfbvv
  *
  * Pros and Cons: http://stackoverflow.com/questions/40703675/react-functional-stateless-component-purecomponent-component-what-are-the-dif
  * Minor Optimization: http://cooperm.com/2016/10/19/clean-up-stateless-react-components-with-inline-render-functions/
