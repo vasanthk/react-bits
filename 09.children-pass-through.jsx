@@ -50,6 +50,7 @@ class App extends React.Component {
 // Header.jsx
 export default class Header extends React.Component {
   render() {
+    // Note that if we don't return { this.props.children } as part of the render method the <Navigation> component will not be rendered.
     return (
       <h1>
         { this.props.title }
