@@ -12,6 +12,7 @@
  * http://stackoverflow.com/questions/36553814/what-is-the-use-of-connect-decorator-in-react-redux
  * http://stackoverflow.com/questions/36286384/decorators-with-react-components
  * https://medium.com/google-developers/exploring-es7-decorators-76ecb65fb841#.8cbzw5wcl
+ * https://survivejs.com/react/appendices/understanding-decorators/
  */
 
 // Non-decorators approach
