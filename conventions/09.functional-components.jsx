@@ -21,7 +21,6 @@ SampleComponent.propTypes = {
 /**
  * Destructuring Props and defaultProps
  */
-
 function ExpandableForm({ onExpand, expanded = false, children, onSubmit }) {
   // Note: We can also use default arguments to act as defaultProps. If expanded is undefined, we set it to false.
   const formStyle = expanded ? {height: 'auto'} : {height: 0};
@@ -43,4 +42,23 @@ function ExpandableForm({ onExpand, expanded = false, children, onSubmit }) {
  * Due to the potential for difficult-to-understand bugs (and the lack of real benefit) we recommend using function instead of const.
  */
 const ExpandableForm = ({ onExpand, expanded, children }) => {};
+
+
+/**
+ * Wrapping Decorators
+ *
+ * Since you can’t use decorators with functional components, you simply pass it the function in as an argument
+ */
+
+function ExpandableForm({ onExpand, expanded = false, children, onSubmit }) {
+  const formStyle = expanded ? {height: 'auto'} : {height: 0}
+  return (
+    <form style={formStyle} onSubmit={onSubmit}>
+      {children}
+      <button onClick={onExpand}>Expand</button>
+    </form>
+  )
+}
+export default observer(ExpandableForm)
+
 
