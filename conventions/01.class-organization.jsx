@@ -55,3 +55,19 @@ Car.defaultProps = {
 Car.propTypes = {
   make: React.PropTypes.string
 };
+
+/**
+ * Initializing state - You can do it without the constructor too.
+ */
+
+class ProfileContainer extends Component {
+  state = {activeProfile: true};
+
+  render() {
+    return (
+      <div>
+        Is Profile Active: {this.state.activeProfile}
+      </div>
+    );
+  }
+}
