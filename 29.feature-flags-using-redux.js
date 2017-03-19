@@ -1,0 +1,97 @@
+/**
+ * Enabling Feature flags in React using Redux
+ *
+ * @Reference:
+ * http://blog.rstankov.com/feature-flags-in-react/
+ * https://gist.github.com/RStankov/0e764f27daf38f2fcd81b82360334528
+ */
+
+// createFeatureFlaggedContainer.js
+import React from 'react';
+import { connect } from 'react-redux';
+import { isFeatureEnabled } from './reducers'
+
+export default function createFeatureFlaggedContainer({ featureName, enabledComponent, disabledComponent }) {
+  function FeatureFlaggedContainer({ isEnabled, ...props }) {
+    const Component = isEnabled ? enabledComponent : disabledComponent;
+
+    if (Component) {
+      return <Component ...props />;
+    }
+
+    // `disabledComponent` is optional property
+    return null;
+  }
+
+  // Having `displayName` is very usefull for debuging.
+  FeatureFlaggedContainer.displayName = `FeatureFlaggedContainer(${ featureName })`;
+
+  return connect((store) => { isEnabled: isFeatureEnabled(store, featureName) })(FeatureFlaggedContainer);
+}
+
+// EnabledFeature.js
+import { connect } from 'react-redux';
+import { isFeatureEnabled } from './reducers'
+
+function EnabledFeature({ isEnabled, children }) {
+  if (isEnabled) {
+    return children;
+  }
+
+  return null;
+}
+
+export default connect((store, { name }) => { isEnabled: isFeatureEnabled(store, name) })(EnabledFeature);
+
+// featureEnabled.js
+import createFeatureFlaggedContainer from './createFeatureFlaggedContainer'
+
+// Decorator for "Page" components.
+// usage: enabledFeature('unicorns')(UnicornsPage);
+export defualt function enabledFeature(featureName) {
+  return (Component) => {
+    return createFeatureFlaggedContainer({
+      featureName,
+      enabledComponent: Component,
+      disabledComponent: PageNotFound, // 404 page or something similar
+    });
+  };
+};
+
+// features.js
+// This is quite simple reducer, containing only an array of features.
+// You can attach this data to a `currentUser` or similar reducer.
+
+// `BOOTSTAP` is global action, which contains the initial data for a page
+// Features access usually don't change during user usage of a page
+const BOOTSTAP = 'features/receive';
+
+export default featuresReducer(state, { type, payload }) {
+  if (type === BOOTSTAP) {
+    return payload.features || [];
+  }
+
+  return state || [];
+}
+
+export function isFeatureEnabled(features, featureName) {
+  return features.indexOf(featureName) !== -1;
+}
+
+// reducers.js
+// This is your main reducer.js file
+import { combineReducers } from 'redux';
+
+export features, { isFeatureEnabled as isFeatureEnabledSelector } from './features';
+// ...other reducers
+
+export default combineReducers({
+  features
+  // ...other reducers
+});
+
+// This is the important part, access to `features` reducer should only happens via this selector.
+// Then you can always change where/how the features are stored.
+export isFeatureEnabled({ features }, featureName) {
+  return isFeatureEnabledSelector(features, featureName);
+}
