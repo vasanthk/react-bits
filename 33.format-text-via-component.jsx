@@ -10,6 +10,8 @@
 
 /**
  * WITH COMPONENT
+ *
+ * Render function is lot cleaner to comprehend as it is just simple component composition.
  */
 const Price = (props) => {
   // toLocaleString is not React specific syntax - it is a native JavaScript function used fo formatting
@@ -27,7 +29,7 @@ Price.propTypes = {
   className: React.PropTypes.string,
   children: React.PropTypes.number,
   showDecimals: React.PropTypes.bool,
-  showSymbol: React.PropTypes.bool,
+  showSymbol: React.PropTypes.bool
 };
 
 Price.defaultProps = {
@@ -52,6 +54,8 @@ const Page = () => {
 
 /**
  * WITHOUT COMPONENT
+ *
+ * Less code: But render looks less clean. (Debatable, yeah I understand)
  */
 function numberToPrice(num, options = {}) {
   const showSymbol = options.showSymbol !== false;
@@ -60,7 +64,7 @@ function numberToPrice(num, options = {}) {
   return num.toLocaleString('en', {
     style: showSymbol ? 'currency' : undefined,
     currency: showSymbol ? 'USD' : undefined,
-    maximumFractionDigits: showDecimals ? 2 : 0,
+    maximumFractionDigits: showDecimals ? 2 : 0
   });
 }
 
