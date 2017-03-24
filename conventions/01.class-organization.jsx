@@ -10,6 +10,8 @@
  * defaultProps
  * propTypes
  *
+ * @Reference:
+ * https://github.com/planningcenter/react-patterns#component-organization
  */
 
 class Car extends React.Component {
