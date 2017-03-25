@@ -1,6 +1,8 @@
 /**
  * Pure Render Checks
  *
+ * In order to preserve performance one needs to consider the creation of new entities in the render method.
+ *
  * Pure render?
  * With React.js pure render I mean components that implement the shouldComponentUpdate method with shallow equality checks.
  * Examples of this are the React.PureComponent, PureRenderMixin, recompose/pure and many others.
@@ -91,5 +93,44 @@ class App extends PureComponent {
 
   render() {
     return <MyInput onChange={this.update}/>;
+  }
+}
+
+// BAD
+class Component extends React.Component {
+  state = {clicked: false};
+
+  onClick() {
+    this.setState({clicked: true})
+  }
+
+  render() {
+    const options = this.props.options || {test: 1}; // Options object created each render if not set
+
+    return <Something
+      options={options}
+      onClick={this.onClick.bind(this)} // New function created each render
+      onTouchTap={(event) => this.onClick(event)} // New function & closure created each render
+    />
+  }
+}
+
+// GOOD
+class Component extends React.Component {
+  state = {clicked: false};
+  options = {test: 1};
+
+  onClick = () => {
+    this.setState({clicked: true})
+  };
+
+  render() {
+    const options = this.props.options || this.options; // Options object created once
+
+    return <Something
+      options={options}
+      onClick={this.onClick} // Function created once, bound once
+      onTouchTap={this.onClick} // Function created once, bound once
+    />
   }
 }
