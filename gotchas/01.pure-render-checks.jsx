@@ -9,6 +9,11 @@
  * https://medium.com/@esamatti/react-js-pure-render-performance-anti-pattern-fb88c101332f
  */
 
+
+/**
+ * CASE 1
+ */
+
 // BAD
 class Table extends PureComponent {
   render() {
@@ -42,5 +47,48 @@ class Table extends PureComponent {
         )}
       </div>
     );
+  }
+}
+
+/**
+ * CASE 2
+ *
+ * Similar issue with using functions in render() as well
+ */
+
+// BAD
+class App extends PureComponent {
+  render() {
+    return <MyInput
+      onChange={e => this.props.update(e.target.value)}/>;
+  }
+}
+// BAD - again
+class App extends PureComponent {
+  update(e) {
+    this.props.update(e.target.value);
+  }
+
+  render() {
+    return <MyInput onChange={this.update.bind(this)}/>;
+  }
+}
+
+// ^^In both cases a new function is created with a new identity. Just like with the array literal.
+// We need to bind the function early
+
+// GOOD
+class App extends PureComponent {
+  constructor(props) {
+    super(props);
+    this.update = this.update.bind(this);
+  }
+
+  update(e) {
+    this.props.update(e.target.value);
+  }
+
+  render() {
+    return <MyInput onChange={this.update}/>;
   }
 }
