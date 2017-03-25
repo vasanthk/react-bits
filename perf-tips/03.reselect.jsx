@@ -1,0 +1,44 @@
+/**
+ * Use Reselect in Redux connect(mapState) -- to avoid frequent re-render.
+ *
+ * @Reference:
+ * https://medium.com/@esamatti/react-js-pure-render-performance-anti-pattern-fb88c101332f#.cz2ypc2ob
+ */
+
+// BAD
+let App = ({otherData, resolution}) => (
+  <div>
+    <DataContainer data={otherData}/>
+    <ResolutionContainer resolution={resolution}/>
+  </div>
+);
+
+const doubleRes = (size) => ({
+  width: size.width * 2,
+  height: size.height * 2
+});
+
+App = connect(state => {
+  return {
+    otherData: state.otherData,
+    resolution: doubleRes(state.resolution)
+  }
+})(App);
+/**
+ * In this above case every time otherData in the state changes both DataContainer and ResolutionContainer
+ * will be rendered even when the resolution in the state does not change.
+ * This is because the doubleRes function will always return a new resolution object with a new identity.
+ * If doubleRes is written with Reselect the issue goes away:
+ * Reselect memoizes the last result of the function and returns it when called until new arguments are passed to it.
+ */
+
+// GOOD
+import { createSelector } from 'reselect';
+const doubleRes = createSelector(
+  r => r.width,
+  r => r.height,
+  (width, height) => ({
+    width: width * 2,
+    height: heiht * 2
+  })
+);
