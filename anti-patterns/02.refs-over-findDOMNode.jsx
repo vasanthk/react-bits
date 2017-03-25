@@ -1,6 +1,11 @@
 /**
  * Use findDOMNode() over callback refs
  *
+ * Note:
+ * React also supports using a string (instead of a callback) as a ref prop on any component, although this approach is mostly legacy at this point.
+ * https://facebook.github.io/react/docs/more-about-refs.html
+ * http://stackoverflow.com/questions/37468913/why-ref-string-is-legacy
+ *
  * @Reference:
  * https://github.com/yannickcr/eslint-plugin-react/issues/678#issue-165177220
  */
