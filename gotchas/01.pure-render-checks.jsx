@@ -7,6 +7,7 @@
  *
  * @Reference:
  * https://medium.com/@esamatti/react-js-pure-render-performance-anti-pattern-fb88c101332f
+ * https://github.com/nfour/js-structures/blob/master/guides/react-anti-patterns.md#pure-render-immutability
  */
 
 
