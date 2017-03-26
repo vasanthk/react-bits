@@ -22,7 +22,7 @@ A compilation of React Patterns, techniques, tips and tricks.
 
 - [Gotchas](#gotchas)
 
-## Design Patterns and Techniques
+## [Design Patterns and Techniques](#design-patterns-and-techniques)
 
 - [Stateless Functions](./01.stateless-functions.jsx)
 
@@ -92,7 +92,7 @@ A compilation of React Patterns, techniques, tips and tricks.
 
 - [Share Tracking Logic](./34.share-tracking-logic.jsx)
 
-## Anti-Patterns
+## [Anti-Patterns](anti-patterns)
 
 - [Props In Initial State](anti-patterns/01.props-in-initial-state.jsx)
 
@@ -108,7 +108,7 @@ A compilation of React Patterns, techniques, tips and tricks.
 
 - [Spreading Props on DOM elements](anti-patterns/07.spreading-props-dom.jsx)
 
-## Handling UX Variations
+## [Handling UX Variations](ux-variations)
 
 - [Composing UX Variations](ux-variations/01.composing-variations.jsx)
 
@@ -122,7 +122,7 @@ A compilation of React Patterns, techniques, tips and tricks.
 
 - [Display Order Variations](ux-variations/06.display-order-variations.jsx)
 
-## Conventions
+## [Conventions](conventions)
 
 - [Class Organization](conventions/01.class-organization.jsx)
 
@@ -146,7 +146,7 @@ A compilation of React Patterns, techniques, tips and tricks.
 
 - [ES6 class constructor super()](conventions/11.super-in-constructor.jsx)
 
-## Perf Tips
+## [Perf Tips](perf-tips)
 
 - [shouldComponentUpdate() check](perf-tips/01.shouldComponentUpdate-check.jsx)
 
@@ -154,7 +154,7 @@ A compilation of React Patterns, techniques, tips and tricks.
 
 - [Using reselect](perf-tips/03.reselect.jsx)
 
-## Styling
+## [Styling](styling)
 
 - [Stateless UI Components](styling/01.stateless-ui-components.jsx)
 
@@ -172,7 +172,7 @@ A compilation of React Patterns, techniques, tips and tricks.
 
 - [HOC for Styling](styling/08.HOC-for-styling.jsx)
 
-## Gotchas
+## [Gotchas](gotchas)
 
 - [Pure render checks](gotchas/01.pure-render-checks.jsx)
 
