@@ -2,9 +2,25 @@
 
 A compilation of React Patterns, techniques, tips and tricks.
 
-Your contributions are heartily♡ welcome. (✿◠‿◠)
+> Your contributions are heartily ♡ welcome. (✿◠‿◠)
 
 ---
+
+## Table of Contents
+
+- [Design Patterns and Techniques](#design-patterns-and-techniques)
+
+- [Anti-Patterns](#anti-patterns)
+
+- [Handling UX Variations](#handling-ux-variations)
+
+- [Conventions](#conventions)
+
+- [Perf Tips](#perf-tips)
+
+- [Styling](#styling)
+
+- [Gotchas](#gotchas)
 
 ## Design Patterns and Techniques
 
