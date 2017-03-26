@@ -1,6 +1,10 @@
-# Handling UX variations and building React components for multiple brands and applications
+# Handling UX variations for multiple brands and apps
 
-Here are few general coding principles which help write reusable React components
+
+## [Slides from my talk](https://speakerdeck.com/vasa/building-multitenant-ui-with-react-dot-js)
+
+
+A few general coding principles which help write reusable React components
 
 ## Single Responsibility Principle
 
@@ -8,15 +12,9 @@ Here are few general coding principles which help write reusable React component
 
 Components/Containers code must essentially deal with only one chunk of the UI feature/functionality.
 
-* Eg. <Shipping Address/>
+* Eg. Shipping Address component
 
-* Address container (Only has address related fields)
-
-* Name container (first and last name)
-
-* Phone component
-
-* State, City and Zip code container
+* Address container (Only has address related fields), Name container (first and last name), Phone component, State, City and Zip code container
 
 **In Redux**
 
@@ -26,11 +24,11 @@ All API related call go into Redux thunks/other async handling sections (redux-p
 
 * Any routing has to be dealt with the receiving component via a promise.
 
-## Keep it Simple Stupid (KISS
+## Keep it Simple Stupid (KISS)
 
 * Essentially, if the component needs no state - use stateless functions.
 
-* Perf matters: Stateless fns > ES6 class components > React.createClass()
+* Perf matters: **Stateless fns > ES6 class components > React.createClass()**
 
 * Don’t pass any more props than required {...this.props} only if the list is big -- if not pass individual props.
 
@@ -38,9 +36,7 @@ All API related call go into Redux thunks/other async handling sections (redux-p
 
 * Don’t optimize prematurely - Making the current component reusable with current variations known.
 
-### [Slides from my talk](https://speakerdeck.com/vasa/building-multitenant-ui-with-react-dot-js)
-
-## Related Article
+## Articles
 
 [Building React Components for Multiple Brands and Applications](https://medium.com/walmartlabs/building-react-components-for-multiple-brands-and-applications-7e9157a39db4)
 
