@@ -164,8 +164,6 @@ Your contributions are heartily♡ welcome. (✿◠‿◠)
 
 ## References
 
-I tried to link them all in my code. Pardon me if I missed a few.
-
 Here are a few great resources:
 
 [React in Patterns by krasimir](https://github.com/krasimir/react-in-patterns)
@@ -175,3 +173,7 @@ Here are a few great resources:
 [reactpatterns.com](https://github.com/chantastic/reactpatterns.com)
 
 [10 React Mini-patterns](https://hackernoon.com/10-react-mini-patterns-c1da92f068c5)
+
+## License
+
+MIT
