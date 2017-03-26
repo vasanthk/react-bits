@@ -6,6 +6,37 @@
  * It is wrapping a component and attaching some new functionalities or props to it.
  */
 
+/**
+ * SIMPLE EXAMPLE
+ */
+// HOC
+import { Component } from "React";
+export var Enhance = ComposedComponent => class extends Component {
+  constructor() {
+    this.state = { data: null };
+  }
+  componentDidMount() {
+    this.setState({ data: 'Hello' });
+  }
+  render() {
+    return <ComposedComponent {...this.props} data={this.state.data} />;
+  }
+};
+
+// HOC Usage
+import { Enhance } from "./Enhance";
+class MyComponent {
+  render() {
+    if (!this.data) return <div>Waiting...</div>;
+    return <div>{this.data}</div>;
+  }
+}
+export default Enhance(MyComponent); // Enhanced component
+
+/**
+ * MORE DETAILED
+ */
+
 // Let’s start with our stateless Greeting component.
 const Greeting = ({ name }) => {
   if (!name) { return <div>Connecting...</div> }
