@@ -43,7 +43,7 @@ const getStyle = context => ({
 });
 
 const Greeting = (props, context) =>
-  <div style={getStyle(context)}>props.name</div>;
+  <div style={getStyle(context)}>{props.name}</div>;
 
 // They can have defined defaultProps, propTypes and contextTypes.
 Greeting.propTypes = {
