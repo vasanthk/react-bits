@@ -7,3 +7,5 @@ If you are pondering over why to use CSS in JS, I highly recommend this [talk](h
 ## Articles
 
 [Patterns for style composition in React](http://jxnblk.com/writing/posts/patterns-for-style-composition-in-react/)
+
+[Inline style vs stylesheet performance](https://www.ctheu.com/2015/08/17/react-inline-styles-vs-css-stupid-benchmark/)
