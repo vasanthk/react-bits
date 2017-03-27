@@ -8,8 +8,8 @@
 
 return (
   <div>
-    {this.props.list.map(function (data, i) {
-      return (<Component data={data} key={i}/>)
+    {this.props.list.map(function (data) {
+      return (<Component data={data} key={data.id}/>)
     })}
   </div>
 );
