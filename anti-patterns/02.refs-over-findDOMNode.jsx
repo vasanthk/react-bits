@@ -1,5 +1,5 @@
 /**
- * Use findDOMNode() over callback refs
+ * Use callback refs over findDOMNode()
  *
  * Note:
  * React also supports using a string (instead of a callback) as a ref prop on any component, although this approach is mostly legacy at this point.
