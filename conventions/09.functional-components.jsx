@@ -1,5 +1,5 @@
 /**
- * Best practices and concentions with using Functional components
+ * Best practices and conventions with using Functional components
  *
  * @Reference:
  * https://engineering.musefind.com/our-best-practices-for-writing-react-components-dec3eb5c3fc8
