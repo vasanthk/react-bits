@@ -1,7 +1,7 @@
 /**
  * Typography Component
  * We can extend the idea of Base components to create Typography components
- * this pattenr helps ensure consistency and keep your styling DRY.
+ * this pattern helps ensure consistency and keep your styling DRY.
  *
  * @Reference:
  * http://jxnblk.com/writing/posts/patterns-for-style-composition-in-react/
