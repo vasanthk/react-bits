@@ -1,5 +1,6 @@
 /**
- * You can’t use regular if/else conditions inside a component definition. The conditional (ternary) operator is your friend.
+ * You can use regular if/else conditions inside a component render. The conditional (ternary) operator is your friend.
+ * Although, as the markup gets larger or more varied - it is advisable to split it up into separate components and use them instead.
  */
 
 //if
