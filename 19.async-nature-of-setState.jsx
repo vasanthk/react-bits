@@ -3,7 +3,7 @@
  *
  * Gist:
  * React batches updates and flushes it put once per frame (perf optimization)
- * However, in some cases Reatc has no control over batching, hence updates are made synchronously
+ * However, in some cases React has no control over batching, hence updates are made synchronously
  * eg. eventListeners, ajax, setTimeout and similar Web APIs
  *
  * @Reference:
