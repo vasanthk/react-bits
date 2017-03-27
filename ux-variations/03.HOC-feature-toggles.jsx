@@ -9,7 +9,7 @@ const isFeatureOn = function (featureName) {
   // return true or false
 };
 
-import {isDeatureOn} from './featureToggle';
+import {isFeatureOn} from './featureToggle';
 
 const toggleOn = (featureName, ComposedComponent) => class HOC extends Component {
   render() {
