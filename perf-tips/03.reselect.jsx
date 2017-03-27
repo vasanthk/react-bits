@@ -39,6 +39,6 @@ const doubleRes = createSelector(
   r => r.height,
   (width, height) => ({
     width: width * 2,
-    height: heiht * 2
+    height: height * 2
   })
 );
