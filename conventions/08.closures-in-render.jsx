@@ -8,12 +8,14 @@
 
 class Example extends Component {
   render() {
-    <input
-      type="text"
-      value={model.name}
-      // onChange={(e) => { model.name = e.target.value }}
-      // ^ Not this. Use the below:
-      onChange={this.handleChange}
-      placeholder="Your Name"/>
+    return (
+      <input
+        type="text"
+        value={model.name}
+        // onChange={(e) => { model.name = e.target.value }}
+        // ^ Not this. Use the below:
+        onChange={this.handleChange}
+        placeholder="Your Name"/>
+    );
   }
 }
