@@ -1,5 +1,8 @@
 # React Bits
-✨ React patterns, techniques, tips and tricks ✨
+
+A compilation of React Patterns, techniques, tips and tricks.
+
+> Your contributions are heartily ♡ welcome. (✿◠‿◠)
 
 - Design Patterns and Techniques
   - [Stateless Functions](./patterns/01.stateless-functions.md)
