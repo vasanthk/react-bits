@@ -3,8 +3,11 @@
   "plugins": ["edit-link"],
   "pluginsConfig": {
     "edit-link": {
-      "base": "https://github.com/Reda-bx/react-bits/blob/master",
+      "base": "https://github.com/vasanthk/react-bits/blob/master",
       "label": "Edit This Page"
+    },
+    "github": {
+      "url": "https://github.com/vasanthk/react-bits/"
     }
   }
 }
