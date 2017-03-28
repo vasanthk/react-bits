@@ -21,7 +21,7 @@ function render() {
 function render() {
   <div>
     {
-      () => { return "hello world!" }()
+      (() => { return "hello world!" })()
     }
   </div>
 }
