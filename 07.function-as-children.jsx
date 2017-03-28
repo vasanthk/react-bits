@@ -1,7 +1,7 @@
 // Using a function as children isn’t inherently useful.
 
 <div>{
-  () => { return "hello world!" }()
+  (() => { return "hello world!" })()
   }</div>
 
 // However, it can be used in component authoring for some serious power. This technique is commonly referred to as render callbacks.
