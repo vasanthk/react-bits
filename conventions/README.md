@@ -1,6 +1,6 @@
 # Conventions
 
-Just a few resonable conventions to follow, since there is no one size fits all.
+Just a few reasonable conventions to follow, since there is no one size fits all.
 
 ## Articles
 
