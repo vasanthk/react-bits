@@ -56,7 +56,7 @@
 - Perf Tips
   - [Introduction](./perf-tips/README.md)
   - [shouldComponentUpdate() check](./perf-tips/01.shouldComponentUpdate-check.md)
-  - [Using recompose](./perf-tips/02.recompose.md)
+  - [Using Pure Components](./perf-tips/02.pure-component.md)
   - [Using reselect](./perf-tips/03.reselect.md)
 - Styling
   - [Introduction](./styling/README.md)
