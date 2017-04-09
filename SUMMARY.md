@@ -72,8 +72,4 @@
   - [Introduction](./gotchas/README.md)
   - [Pure render checks](./gotchas/01.pure-render-checks.md)
   - [Synthetic Events](./gotchas/02.synthetic-events.md)
-- References
-  - [React in Patterns by krasimir](https://github.com/krasimir/react-in-patterns)
-  - [React Patterns by planningcenter](https://github.com/planningcenter/react-patterns)
-  - [reactpatterns.com](https://github.com/chantastic/reactpatterns.com)
-  - [10 React Mini-patterns](https://hackernoon.com/10-react-mini-patterns-c1da92f068c5)
+- [Related Links](./READINGS.md)
