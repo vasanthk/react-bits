@@ -40,7 +40,7 @@
   - [Introduction](./anti-patterns/README.md)
   - [Props In Initial State](./anti-patterns/01.props-in-initial-state.md)
   - [findDOMNode()](./anti-patterns/02.findDOMNode.md)
-  - [Mixins](./anti-patterns/03.HOC-over-mixins.md)
+  - [Mixins](./anti-patterns/03.mixins.md)
   - [setState() in componentWillMount()](./anti-patterns/04.setState-in-componentWillMount.md)
   - [Mutating State](./anti-patterns/05.mutating-state.md)
   - [Using Indexs as Key](./anti-patterns/06.using-indexes-as-key.md)
