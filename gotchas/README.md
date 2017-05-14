@@ -1,6 +1,6 @@
 # Gotchas
 
-React is intuitive for the most part, but there are quite a few stumbling points which might caatch you by surprise. We'll discuss more on them here.
+React is intuitive for the most part, but there are quite a few stumbling points which might catch you by surprise. We'll discuss more on them here.
 
 ## Articles
 
