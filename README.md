@@ -1,6 +1,8 @@
-# React Bits
+# [React Bits](https://vasanthk.gitbooks.io/react-bits)
 
 A compilation of React Patterns, techniques, tips and tricks.
+
+**Gitbook format**: https://vasanthk.gitbooks.io/react-bits
 
 > Your contributions are heartily ♡ welcome. (✿◠‿◠)
 
