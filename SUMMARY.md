@@ -2,23 +2,6 @@
 ✨ React patterns, techniques, tips and tricks ✨
 
 - Design Patterns and Techniques
-  - [Stateless Functions](./patterns/01.stateless-functions.md)
-  - [JSX Spread Attributes](./patterns/02.jsx-spread-attributes.md)
-  - [Destructuring Arguments](./patterns/03.destructuring-arguments.md)
-  - [Conditional Rendering](./patterns/04.conditional-rendering.md)
-  - [Children Types](./patterns/05.children-types.md)
-  - [Array As Children](./patterns/06.array-as-children.md)
-  - [Function As Children](./patterns/07.function-as-children.md)
-  - [Render Callback](./patterns/08.render-callback.md)
-  - [Children Pass Through](./patterns/09.children-pass-through.md)
-  - [Proxy Component](./patterns/10.proxy-component.md)
-  - [Style Component](./patterns/11.style-component.md)
-  - [Event Switch](./patterns/12.event-switch.md)
-  - [Layout Component](./patterns/13.layout-container.md)
-  - [Container Component](./patterns/14.container-component.md)
-  - [Higher Order Component](./patterns/15.higher-order-component.md)
-  - [State Hoisting](./patterns/16.state-hoisting.md)
-  - [Controlled-Uncontrolled Input](./patterns/17.controlled-uncontrolled-input.md)
   - [Conditional in JSX](./patterns/18.conditionals-in-jsx.md)
   - [Async Nature Of setState()](./patterns/19.async-nature-of-setState.md)
   - [Dependency Injection](./patterns/20.dependency-injection.md)
