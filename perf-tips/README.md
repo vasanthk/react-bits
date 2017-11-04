@@ -10,6 +10,8 @@
 
 - Profile Components with Chrome Timeline
 
+- Defer computationally expensive tasks in componentWillMount/componentDidMount by using setTimeout and/or requestAnimationFrame
+
 ## Articles
 
 [Optimizing Performance: Docs](https://facebook.github.io/react/docs/optimizing-performance.html)
