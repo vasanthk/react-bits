@@ -46,7 +46,7 @@
   - [Stateless UI Components](./styling/01.stateless-ui-components.md)
   - [Styles Module](./styling/02.styles-module.md)
   - [Style Functions](./styling/03.style-functions.md)
-  - [NPM Modules](./styling/04.using-npm-modules.md)
+  - [npm Modules](./styling/04.using-npm-modules.md)
   - [Base Component](./styling/05.base-component.md)
   - [Layout Component](./styling/06.layout-component.md)
   - [Typography Component](./styling/07.typography-component.md)
