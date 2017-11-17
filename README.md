@@ -6,6 +6,10 @@ A compilation of React Patterns, techniques, tips and tricks.
 
 > Your contributions are heartily ♡ welcome. (✿◠‿◠)
 
+> **Translations by community:**
+> - 中文版 (Chinese): [react-bits-cn](https://github.com/hateonion/react-bits-CN)
+
+
 - Design Patterns and Techniques
   - [Conditional in JSX](./patterns/18.conditionals-in-jsx.md)
   - [Async Nature Of setState()](./patterns/19.async-nature-of-setState.md)
