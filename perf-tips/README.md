@@ -14,7 +14,7 @@
 
 ## Articles
 
-[Optimizing Performance: Docs](https://facebook.github.io/react/docs/optimizing-performance.html)
+[Optimizing Performance: Docs](https://reactjs.org/docs/optimizing-performance.html)
 
 [Performance Engineering with React](http://benchling.engineering/performance-engineering-with-react/)
 
