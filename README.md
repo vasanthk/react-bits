@@ -10,6 +10,7 @@ A compilation of React Patterns, techniques, tips and tricks.
 
 > **Translations by community:**
 > - 中文版 (Chinese): [react-bits-cn](https://github.com/hateonion/react-bits-CN)
+> - 한국어 (Korean): [react-bits-ko](https://github.com/rayleighko/react-bits-ko)
 
 
 - Design Patterns and Techniques
